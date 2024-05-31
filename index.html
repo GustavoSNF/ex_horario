@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2em;
+            text-align: center;
+            background-color: lightcoral;
+            height: 100vh;
+            
+        }
+
+        #container h1 {
+            padding-top: 3em;
+            color: white;
+        }
+
+        #container > p {
+            color: white;
+        }
+
+        #container__conteudo{
+            background-color: white;
+            padding: 2em 15em;
+            border-radius: 10px;
+        }
+
+        #container__conteudo p {
+            padding-bottom: 2em;
+        }
+
+        #container__conteudo img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+
+        #dado {
+            width: 50px;
+        }
+
+        #botao{
+            width: 50%;
+            padding: 3px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="titulo">Hora do Dia</h1>
+        <div id="container__conteudo">
+            <p id="horario">Agora são <input type="number" id="dado"> horas </p>
+            <p><img src="foto__dia.jpg" id="foto"></p>
+        <input type="button" value="clicar" id="botao">
+        </div>
+     <p id="footer"> &copy Gustavo Salarthiel </p>
+    </div>
+
+    <script>
+
+        let btn = document.getElementById("botao")
+
+        btn.addEventListener("click", function (clicar){
+
+            let hora = Number(document.getElementById("dado").value)
+            let b = document.querySelector("#container")
+            let t = document.getElementById("titulo")
+            let f = document.getElementById("footer")
+            let ft = document.getElementById("foto")
+            
+            if (hora <0 || hora>24) {
+                t.innerHTML = "Horário Inválido"
+            }else {
+              if (hora <= 12) {
+                b.style.backgroundColor = "#fce8a5"
+                t.style.color = "black"
+                t.innerHTML = "Bom Dia!"
+                f.style.color = "black"
+                ft.setAttribute("src", "foto__dia.jpg")
+            }else if (hora <=18) {
+                b.style.backgroundColor = "orange"
+                t.style.color = "white"
+                t.innerHTML = "Boa Tarde!"
+                f.style.color = "white"
+                ft.setAttribute("src", "foto__tarde.jpg");
+            }else if (hora <= 24) {
+                b.style.backgroundColor = "rgb(94, 94, 94)"
+                t.style.color = "white"
+                t.innerHTML = "Boa Noite!"
+                f.style.color = "white"
+                ft.setAttribute("src", "foto__noite.jpg")
+        }
+    }
+})
+    </script>
+</body>
+</html>
